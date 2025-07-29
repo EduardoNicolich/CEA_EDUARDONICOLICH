@@ -1,0 +1,163 @@
+sources:
+  - name: erp
+    database: fea25_05
+    schema: raw_adventure_works
+    tables:
+      - name: production_product
+        description: Contains details about each product sold by the company.
+        columns:
+          - name: productid
+            description: Unique identifier for each product.
+            tests:
+              - unique
+              - not_null
+
+      - name: production_productsubcategory
+        description: Contains the subcategories into which products are grouped.
+        columns:
+          - name: productsubcategoryid
+            description: Unique identifier for each product subcategory.
+            tests:
+              - unique
+              - not_null
+
+      - name: production_productcategory
+        description: Contains the top-level product categories.
+        columns:
+          - name: productcategoryid
+            description: Unique identifier for each product category.
+            tests:
+              - unique
+              - not_null
+
+      - name: production_productmodel
+        description: Contains product model names and related marketing descriptions.
+        columns:
+          - name: productmodelid
+            description: Unique identifier for each product model.
+            tests:
+              - unique
+              - not_null
+
+      - name: sales_creditcard
+        description: Contains credit card information used by customers.
+        columns:
+          - name: creditcardid
+            description: Unique identifier for each credit card.
+            tests:
+              - unique
+              - not_null
+
+      - name: sales_salesorderdetail
+        description: Contains the line items for each sales order.
+        columns:
+          - name: salesorderdetailid
+            description: Unique identifier for each sales order line item.
+            tests:
+              - unique
+              - not_null
+
+      - name: sales_salesorderheader
+        description: Contains header information for sales orders.
+        columns:
+          - name: salesorderid
+            description: Unique identifier for each sales order.
+            tests:
+              - unique
+              - not_null
+
+      - name: sales_salesterritory
+        description: Contains sales regions.
+        columns:
+          - name: territoryid
+            description: Unique identifier for each sales territory.
+            tests:
+              - unique
+              - not_null  
+
+      - name: sales_salesreason
+        description: Contains the reasons why a sale occurred.
+        columns:
+          - name: salesreasonid
+            description: Unique identifier for each sales reason.
+            tests:
+              - unique
+              - not_null
+
+      - name: sales_customer
+        description: Contains customer account information.
+        columns:
+          - name: customerid
+            description: Unique identifier for each customer.
+            tests:
+              - unique
+              - not_null
+
+      - name: sales_store
+        description: Contains retail store information.
+        columns:
+          - name: businessentityid
+            description: Unique identifier linking the store to a business entity.
+            tests:
+              - unique
+              - not_null
+
+      - name: person_person
+        description: Contains personal information for people in the organization.
+        columns:
+          - name: businessentityid
+            description: Unique identifier for the person as a business entity.
+            tests:
+              - unique
+              - not_null
+
+      - name: person_address
+        description: Contains address information for customers and employees.
+        columns:
+          - name: addressid
+            description: Unique identifier for each address.
+            tests:
+              - unique
+              - not_null
+
+      - name: person_stateprovince
+        description: Contains state and province information.
+        columns:
+          - name: stateprovinceid
+            description: Unique identifier for each state or province.
+            tests:
+              - unique
+              - not_null
+
+      - name: person_countryregion
+        description: Contains country or region information.
+        columns:
+          - name: countryregioncode
+            description: Unique code for each country or region.
+            tests:
+              - unique
+              - not_null
+      - name: person_businessentity
+        description: Contains business entities information.
+        columns:
+          - name: businessentityid
+            description: Unique code for each business entity.
+            tests:
+              - unique
+              - not_null
+
+      - name: sales_salesorderheadersalesreason
+        description: Bridge table associating sales orders with the reasons for the sale.
+        columns:
+          - name: salesorderid
+            description: Foreign key to the sales order.
+            tests:
+              - not_null
+          - name: salesreasonid
+            description: Foreign key to the sales reason.
+            tests:
+              - not_null
+        tests:
+          - unique:
+              column_name: "(salesorderid || '-' || salesreasonid)"
+
