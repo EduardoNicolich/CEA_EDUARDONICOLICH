@@ -1,0 +1,66 @@
+models:
+  - name: fct_sales
+    description: Fact model with sales data and metrics.
+    columns:
+      - name: order_item_sk
+        description: Surrogate primary key generated from order_detail_pk and order_pk.
+        tests:
+          - unique
+          - not_null
+
+      - name: order_fk
+        description: Foreign key referencing the sales order.
+
+      - name: product_fk
+        description: Foreign key referencing the product.
+
+      - name: special_offer_fk
+        description: Foreign key referencing the special offer applied to the order.
+
+      - name: customer_fk
+        description: Foreign key referencing the customer who placed the order.
+
+      - name: salesperson_fk
+        description: Foreign key referencing the salesperson responsible for the order.
+
+      - name: territory_fk
+        description: Foreign key referencing the sales territory.
+
+      - name: shiptoaddress_fk
+        description: Foreign key referencing the shipping address.
+
+      - name: billtoaddress_fk
+        description: Foreign key referencing the billing address.
+
+      - name: order_date
+        description: Date when the order was placed.
+
+      - name: status
+        description: Current status of the order.
+
+      - name: cardtype
+        description: Type of credit card used for payment or indication of no credit card.
+
+      - name: qty
+        description: Quantity of product ordered.
+
+      - name: unit_price
+        description: Unit price of the product ordered..
+
+      - name: total_gross
+        description: Total gross amount before discount (unit price * quantity).
+
+      - name: discount
+        description: Discount applied on the order.
+
+      - name: subtotal
+        description: Subtotal amount after discount (unit price * (1 - discount) * quantity).
+
+      - name: freight_allocated
+        description: Freight cost allocated to the order item proportionally.
+
+      - name: tax_allocated
+        description: Tax cost allocated to the order item proportionally.
+
+      - name: total_due
+        description: Total amount due for the order item (subtotal + freight_allocated + tax_allocated).
