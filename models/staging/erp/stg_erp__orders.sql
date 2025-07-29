@@ -7,13 +7,6 @@ source as (
 
 )
 
-, status_map as (
-
-    select * 
-    from {{ ref('status_de_para') }}
-
-)
-
 , renamed as (
 
     select
@@ -29,7 +22,7 @@ source as (
         , cast(totaldue as numeric(18,4)) as order_totaldue
         , cast(billtoaddressid as int) as billtoaddress_fk
         , cast(shiptoaddressid as int) as shiptoaddress_fk
-        , sm.titulo as status
+        , cast(status as int) as status
         --, revisionnumber      
         --, duedate
         --, shipdate      
@@ -43,9 +36,7 @@ source as (
         --, rowguid
         --, modifieddat
 
-    from source so
-    left join status_map sm
-        on cast(so.status as integer) = sm.codigo
+    from source
 
 )
 
