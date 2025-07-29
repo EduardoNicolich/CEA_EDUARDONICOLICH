@@ -1,0 +1,30 @@
+models:
+  - name: dim_locations
+    description: Dimension model containing location information including address, state, territory, country, and continent.
+    columns:
+      - name: address_pk
+        description: Primary key identifying the address record.
+        tests:
+          - unique
+          - not_null
+
+      - name: address_city
+        description: City of the address.
+
+      - name: stateprovince_code
+        description: Foreign key referencing the state or province code.
+
+      - name: state_province_name
+        description: Name of the state or province.
+
+      - name: territory_name
+        description: Name of the sales territory or region.
+
+      - name: country_code
+        description: Code of the country for the address.
+
+      - name: country_name
+        description: Name of the country (alias for country_region_name).
+
+      - name: continent
+        description: Continent where the address is located.
