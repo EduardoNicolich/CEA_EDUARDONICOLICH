@@ -1,0 +1,15 @@
+models:
+  - name: dim_salesreasons
+    description: Dimension model containing reasons associated with sales orders.
+    columns:
+      - name: sales_reason_pk
+        description: Primary key identifying the sales reason (cast from salesreasonid).
+        tests:
+          - unique
+          - not_null
+
+      - name: reason_name
+        description: Name or description of the sales reason.
+
+      - name: reason_type
+        description: Category or type of the sales reason.
