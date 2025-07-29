@@ -1,0 +1,7 @@
+Codigo,tipo,Descricao
+SC,Store Contact,Contato de uma loja (empresa cliente)
+IN,Individual,Pessoa física (cliente individual)
+SP,Sales Person,Vendedor
+EM,Employee,Funcionário (não necessariamente vendedor)
+VC,Vendor Contact,Contato de fornecedor
+GC,General Contact,Outro tipo de contato
