@@ -1,0 +1,15 @@
+models:
+  - name: fct_bridge_salesreasons
+    description: Bridge table modeling the many-to-many relationship between sales orders and sales reasons.
+    columns:
+      - name: bridge_reasons_sk
+        description: Surrogate primary key generated from sales_order_pk and sales_reason_fk.
+        tests:
+          - unique
+          - not_null
+
+      - name: sales_order_pk
+        description: Foreign key referencing the sales order.
+
+      - name: sales_reason_fk
+        description: Foreign key referencing the sales reason.
