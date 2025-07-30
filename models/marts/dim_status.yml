@@ -1,0 +1,12 @@
+models:
+  - name: dim_status
+    description: Dimension model containing the status of the orders.
+    columns:
+      - name: status_pk
+        description: Primary key identifying the status.
+        tests:
+          - unique
+          - not_null
+
+      - name: status_name
+        description: Name of the status.
