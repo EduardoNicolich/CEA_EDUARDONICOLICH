@@ -16,13 +16,13 @@ source as (
         , cast(salespersonid as int) as salesperson_fk
         , cast(territoryid as int) as territory_fk
         , cast(creditcardid as int) as creditcard_fk
+        , cast(billtoaddressid as int) as billtoaddress_fk
+        , cast(shiptoaddressid as int) as shiptoaddress_fk
+        , cast(status as int) as status_fk
         , cast(subtotal as numeric(18,4)) as order_subtotal
         , cast(taxamt as numeric(18,4)) as order_tax_amount
         , cast(freight as numeric(18,4)) as order_freight
         , cast(totaldue as numeric(18,4)) as order_totaldue
-        , cast(billtoaddressid as int) as billtoaddress_fk
-        , cast(shiptoaddressid as int) as shiptoaddress_fk
-        , cast(status as int) as status
         --, revisionnumber      
         --, duedate
         --, shipdate      

@@ -12,12 +12,7 @@ with
         select *
         from {{ ref('stg_erp__creditcards') }}
     )
-    , status_map as (
 
-        select * 
-        from {{ ref('status_de_para') }}
-
-    )
 -- transformation
     , joined as (
         select
@@ -40,13 +35,11 @@ with
             , orders.order_totaldue
             , orders.shiptoaddress_fk
             , orders.billtoaddress_fk
-            , orders.status
-            , sm.titulo
+            , orders.status_fk
             , creditcards.cardtype
         from orders_details
         left join orders on orders_details.order_fk = orders.order_pk
         left join creditcards on orders.creditcard_fk = creditcards.creditcard_pk
-        left join status_map sm on orders.status = sm.codigo
     )
     , metrics as (
         select
@@ -62,8 +55,8 @@ with
             --, creditcard_fk
             , shiptoaddress_fk
             , billtoaddress_fk
+            , status_fk
             , order_date
-            , titulo as status
             , case
                 when cardtype is null then 'Payment without credit card'
                 else cardtype
